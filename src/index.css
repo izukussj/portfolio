@@ -1,31 +1,48 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
-/* CSS Custom Properties for new color palette */
+/* CSS Custom Properties - Refined palette */
 :root {
-  --bg-primary: #0a0b0f;
-  --bg-secondary: #111318;
-  --accent-primary: #00d2ff;
-  --accent-secondary: #3a7bd5;
-  --accent-tertiary: #ff006e;
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --bg-primary: #0f0f11;
+  --bg-secondary: #16161a;
+  --accent-primary: #6366f1;
+  --accent-secondary: #a855f7;
+  --accent-tertiary: #8b5cf6;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
   --text-muted: #64748b;
-  --border-primary: rgba(255, 255, 255, 0.08);
-  --surface-glass: rgba(15, 23, 42, 0.4);
+  --border-primary: rgba(255, 255, 255, 0.1);
+  --surface-glass: rgba(22, 22, 26, 0.8);
 }
 
-/* Typography */
+/* Typography - Enhanced */
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   font-weight: 400;
   line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
 .font-mono {
   font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
   font-feature-settings: 'liga' 1, 'calt' 1;
+}
+
+/* Enhanced typography classes */
+h1, h2, h3, h4, h5, h6 {
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  letter-spacing: -0.025em;
+}
+
+.text-elegant {
+  font-weight: 300;
+  letter-spacing: -0.02em;
+}
+
+.text-refined {
+  font-weight: 400;
+  letter-spacing: -0.015em;
 }
 
 /* Custom nav item styles */
@@ -72,5 +89,56 @@ body {
 
 .animate-float-slow {
   animation: float-slow 6s ease-in-out infinite;
+}
+
+/* Custom cursor - Fixed */
+body {
+  cursor: none;
+}
+
+.cursor {
+  position: fixed;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  transform-origin: center;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+a, button, [role="button"] {
+  cursor: none !important;
+}
+
+/* Typing animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #6366f1; }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid #6366f1;
+  white-space: nowrap;
+  animation: blink-caret 1s step-end infinite;
 }
 

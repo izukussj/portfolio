@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, ChevronDown } from "lucide-react";
+import { Mail, Phone, Linkedin, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, MousePointer2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 // ====== Portfolio dernier cri – Single-file React (Tailwind) ======
@@ -241,6 +241,84 @@ function ParticleBackground() {
   );
 }
 
+// ====== Custom Cursor ======
+function CustomCursor() {
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const followerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    const follower = followerRef.current;
+    if (!cursor || !follower) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const moveCursor = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      if (cursor) {
+        cursor.style.transform = `translate3d(${mouseX - 8}px, ${mouseY - 8}px, 0)`;
+      }
+    };
+
+    const moveFollower = () => {
+      if (follower) {
+        follower.style.transform = `translate3d(${mouseX - 16}px, ${mouseY - 16}px, 0)`;
+      }
+      requestAnimationFrame(moveFollower);
+    };
+
+    window.addEventListener('mousemove', moveCursor);
+    moveFollower();
+
+    return () => {
+      window.removeEventListener('mousemove', moveCursor);
+    };
+  }, []);
+
+  return (
+    <>
+      <div ref={cursorRef} className="cursor" />
+      <div ref={followerRef} className="cursor-follower" />
+    </>
+  );
+}
+
+// ====== Typewriter Effect ======
+function TypewriterEffect({ texts, speed = 100 }: { texts: string[]; speed?: number }) {
+  const [currentText, setCurrentText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const text = texts[currentIndex];
+    const timeout = setTimeout(() => {
+      if (isDeleting) {
+        setCurrentText(prev => prev.slice(0, -1));
+        if (currentText === '') {
+          setIsDeleting(false);
+          setCurrentIndex(prev => (prev + 1) % texts.length);
+        }
+      } else {
+        setCurrentText(text.slice(0, currentText.length + 1));
+        if (currentText === text) {
+          setTimeout(() => setIsDeleting(true), 2000);
+        }
+      }
+    }, isDeleting ? speed / 2 : speed);
+
+    return () => clearTimeout(timeout);
+  }, [currentText, currentIndex, isDeleting, texts, speed]);
+
+  return (
+    <span className="typewriter">
+      {currentText}
+    </span>
+  );
+}
+
 // ====== Animated Counter ======
 function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) {
   const [count, setCount] = useState(0);
@@ -361,6 +439,7 @@ function Card({ children }: any) {
 export default function PortfolioApp() {
   return (
     <div className="min-h-screen text-white relative" style={{ background: 'var(--bg-primary)' }}>
+      <CustomCursor />
       <ParticleBackground />
       <SectionIndicator />
       {/* Background gradients */}
@@ -370,252 +449,155 @@ export default function PortfolioApp() {
         <div className="absolute bottom-1/4 left-1/4 h-60 w-60 rounded-full blur-3xl" style={{ background: 'radial-gradient(circle, rgba(58, 123, 213, 0.1) 0%, transparent 70%)' }} />
       </div>
 
-      {/* Header */}
-      <header className="sticky top-0 z-40">
-        {/* Glassmorphism background */}
-        <div className="absolute inset-0 backdrop-blur-xl border-b" style={{ 
-          background: 'linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4))',
-          borderColor: 'var(--border-primary)'
-        }}>
-          <div className="absolute inset-0" style={{ 
-            background: 'linear-gradient(to right, rgba(0, 210, 255, 0.03), rgba(255, 0, 110, 0.03))'
+      {/* Logo Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 p-6">
+        <a href="#home" className="group relative inline-block">
+          <div className="absolute -inset-2 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500" style={{
+            background: 'linear-gradient(to right, #6366f1, #8b5cf6)'
           }}></div>
-        </div>
-        
-        <div className="relative max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-          {/* Logo with animated glow */}
-          <a href="#home" className="group relative">
-            <div className="absolute -inset-2 rounded-lg blur opacity-20 group-hover:opacity-40 transition duration-500" style={{
-              background: 'linear-gradient(to right, var(--accent-primary), var(--accent-tertiary))'
-            }}></div>
-            <div className="relative font-bold text-xl tracking-tight px-4 py-2 rounded-lg border backdrop-blur-sm" style={{
-              color: 'var(--text-primary)',
-              background: 'rgba(0, 0, 0, 0.2)',
-              borderColor: 'var(--border-primary)'
-            }}>
-              Seydina<span className="text-transparent bg-clip-text font-mono" style={{
-                background: 'linear-gradient(to right, var(--accent-primary), var(--accent-tertiary))'
-              }}>.dev</span>
-            </div>
-          </a>
-
-          {/* Navigation with icon logos */}
-          <nav className="hidden lg:flex items-center gap-1">
-            <div className="flex items-center gap-2 backdrop-blur-sm rounded-full p-2 border" style={{
-              background: 'var(--surface-glass)',
-              borderColor: 'var(--border-primary)'
-            }}>
-              <a href="#projects" className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 210, 255, 0.1)';
-                e.currentTarget.style.color = 'var(--accent-primary)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}>
-                <Briefcase className="h-5 w-5" />
-                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Projets
-                </span>
-              </a>
-              
-              <a href="#experience" className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 210, 255, 0.1)';
-                e.currentTarget.style.color = 'var(--accent-primary)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}>
-                <Calendar className="h-5 w-5" />
-                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Expérience
-                </span>
-              </a>
-              
-              <a href="#skills" className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 210, 255, 0.1)';
-                e.currentTarget.style.color = 'var(--accent-primary)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}>
-                <Code2 className="h-5 w-5" />
-                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Compétences
-                </span>
-              </a>
-              
-              <a href="#education" className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 210, 255, 0.1)';
-                e.currentTarget.style.color = 'var(--accent-primary)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}>
-                <GraduationCap className="h-5 w-5" />
-                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Formation
-                </span>
-              </a>
-              
-              <a href="#contact" className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110" style={{ color: 'var(--text-secondary)' }} onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 210, 255, 0.1)';
-                e.currentTarget.style.color = 'var(--accent-primary)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'transparent';
-                e.currentTarget.style.color = 'var(--text-secondary)';
-              }}>
-                <Mail className="h-5 w-5" />
-                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-black/80 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
-                  Contact
-                </span>
-              </a>
-            </div>
-          </nav>
-
-          {/* Action buttons */}
-          <div className="flex items-center gap-3">
-            {/* Menu mobile */}
-            <button className="lg:hidden p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition">
-              <div className="w-5 h-5 flex flex-col justify-center gap-1">
-                <div className="w-full h-0.5 bg-white/80 rounded"></div>
-                <div className="w-full h-0.5 bg-white/80 rounded"></div>
-                <div className="w-full h-0.5 bg-white/80 rounded"></div>
-              </div>
-            </button>
-            
-            {PROFILE.cvUrl ? (
-              <a href={PROFILE.cvUrl} className="group relative overflow-hidden rounded-full px-5 py-2.5 text-white font-medium text-sm hover:shadow-lg transition-all duration-300" style={{
-                background: 'linear-gradient(to right, var(--accent-primary), var(--accent-secondary))',
-                boxShadow: '0 0 0 0 rgba(0, 210, 255, 0)'
-              }} onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(0, 210, 255, 0.25)';
-              }} onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 0 0 0 rgba(0, 210, 255, 0)';
-              }} download>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{
-                  background: 'linear-gradient(to right, var(--accent-secondary), var(--accent-primary))'
-                }}></div>
-                <div className="relative flex items-center gap-2">
-                  <Download className="h-4 w-4" /> CV
-                </div>
-              </a>
-            ) : null}
+          <div className="relative font-bold text-xl tracking-tight px-4 py-2 rounded-lg border backdrop-blur-sm" style={{
+            color: 'var(--text-primary)',
+            background: 'rgba(0, 0, 0, 0.3)',
+            borderColor: 'rgba(255, 255, 255, 0.1)'
+          }}>
+            Seydina<span className="font-mono" style={{ color: '#8b5cf6' }}>.dev</span>
           </div>
-        </div>
+        </a>
       </header>
 
-      {/* Hero Section - Profile Photo Focus */}
-      <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center">
-        {/* Portfolio Background Text */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
-          <h1 className="text-[20vw] md:text-[15vw] lg:text-[12vw] font-black tracking-wider opacity-5 font-mono" style={{
-            color: 'var(--text-primary)',
-            textShadow: '0 0 100px rgba(0, 210, 255, 0.3)'
-          }}>PORTFOLIO</h1>
+      {/* Top Navigation */}
+      <nav className="fixed top-6 right-6 z-50">
+        <div className="backdrop-blur-xl bg-black/10 rounded-2xl p-3 border border-white/10">
+          <div className="flex space-x-3">
+            <a href="#projects" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
+              <Briefcase className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Projets
+              </span>
+            </a>
+            
+            <a href="#experience" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
+              <Calendar className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Expérience
+              </span>
+            </a>
+            
+            <a href="#skills" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
+              <Code2 className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Compétences
+              </span>
+            </a>
+            
+            <a href="#education" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
+              <GraduationCap className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Formation
+              </span>
+            </a>
+            
+            <a href="#contact" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
+              <Mail className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Contact
+              </span>
+            </a>
+          </div>
         </div>
+      </nav>
 
-        <div className="relative z-10 text-center px-6">
+      {/* Hero Section - Profile Photo Focus */}
+      <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center pt-20">
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
           {/* Profile Photo */}
-          <div className="mb-12 relative">
-            <div className="relative mx-auto w-80 h-80 md:w-96 md:h-96">
-              {/* Gradient Border Animation */}
-              <div className="absolute -inset-4 rounded-full" style={{
-                background: 'linear-gradient(45deg, var(--accent-primary), var(--accent-tertiary), var(--accent-secondary), var(--accent-primary))',
-                backgroundSize: '300% 300%',
-                animation: 'gradientRotate 8s ease infinite'
+          <div className="mb-16 relative">
+            <div className="relative mx-auto w-64 h-64 md:w-80 md:h-80">
+              {/* Simple elegant border */}
+              <div className="absolute -inset-3 rounded-full" style={{
+                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3))'
               }}></div>
               
-              {/* Inner glow */}
-              <div className="absolute -inset-2 rounded-full blur-xl opacity-30" style={{
-                background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))'
+              {/* Soft glow */}
+              <div className="absolute -inset-1 rounded-full blur-md opacity-20" style={{
+                background: 'linear-gradient(135deg, #6366f1, #a855f7)'
               }}></div>
               
               {/* Photo container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm">
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2" style={{ borderColor: 'rgba(255, 255, 255, 0.15)' }}>
                 <img 
                   src="/seydina.png" 
                   alt="Seydina Laye"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-110"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500 hover:scale-105"
                 />
                 {/* Subtle overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/10"></div>
               </div>
             </div>
           </div>
 
           {/* Name and Title */}
-          <div className="space-y-4 mb-8">
-            <p className="text-sm uppercase tracking-widest font-medium" style={{ color: 'var(--accent-primary)' }}>
-              Disponible pour CDI – Consultant Dev / Back-end
-            </p>
-            <h2 className="text-4xl md:text-6xl font-bold">
-              <span style={{ color: 'var(--text-primary)' }}>{PROFILE.name}</span>
-            </h2>
-            <p className="text-xl md:text-2xl font-medium font-mono" style={{ color: 'var(--accent-primary)' }}>
-              {PROFILE.title}
-            </p>
+          <div className="space-y-6 mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium" style={{
+              background: 'rgba(99, 102, 241, 0.1)',
+              color: '#6366f1',
+              border: '1px solid rgba(99, 102, 241, 0.2)'
+            }}>
+              Disponible pour CDI
+            </div>
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight">
+              <span className="text-white font-extralight">{PROFILE.name.split(' ')[0]} </span>
+              <span className="font-medium" style={{ color: '#6366f1' }}>{PROFILE.name.split(' ')[1]}</span>
+              <span className="text-2xl md:text-4xl font-mono opacity-80" style={{ color: '#8b5cf6' }}>.dev</span>
+            </h1>
+            <div className="text-xl md:text-2xl font-light leading-relaxed" style={{ color: '#94a3b8', minHeight: '2rem' }}>
+              <TypewriterEffect texts={[
+                'Ingénieur informatique',
+                'Développeur Back-end',
+                'Expert API & DevOps',
+                'Consultant technique'
+              ]} speed={80} />
+            </div>
           </div>
 
           {/* Brief description */}
-          <p className="max-w-2xl mx-auto text-lg leading-relaxed mb-12" style={{ color: 'var(--text-secondary)' }}>
+          <p className="max-w-2xl mx-auto text-lg leading-relaxed mb-16 font-light" style={{ color: '#64748b' }}>
             {PROFILE.about}
           </p>
 
-          {/* Animated Scroll Button */}
+          {/* Elegant Scroll Indicator */}
           <div className="relative">
-            <a href="#projects" className="group inline-flex flex-col items-center gap-3 transition-all duration-300 hover:scale-110">
+            <a href="#projects" className="group inline-flex flex-col items-center gap-4 transition-all duration-300">
               <div className="relative">
-                <div className="absolute -inset-4 rounded-full blur opacity-0 group-hover:opacity-30 transition-opacity duration-500" style={{
-                  background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))'
-                }}></div>
-                <div className="relative flex items-center justify-center w-16 h-16 rounded-full border-2 transition-all duration-300 group-hover:border-transparent" style={{
-                  borderColor: 'var(--accent-primary)',
-                  background: 'rgba(0, 0, 0, 0.2)',
-                  backdropFilter: 'blur(10px)'
-                }} onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'var(--accent-primary)';
-                }} onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(0, 0, 0, 0.2)';
-                }}>
-                  <ChevronDown className="h-8 w-8 text-white animate-bounce" />
+                <div className="w-px h-12 mx-auto" style={{ background: 'linear-gradient(to bottom, transparent, #6366f1, transparent)' }}></div>
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                  <MousePointer2 className="h-5 w-5 text-white/60 group-hover:text-white transition-colors animate-bounce" style={{ transform: 'rotate(90deg)' }} />
                 </div>
               </div>
-              <span className="text-sm font-medium opacity-70 group-hover:opacity-100 transition-opacity" style={{ color: 'var(--text-primary)' }}>
-                Explorer mon univers
+              <span className="text-sm font-light opacity-60 group-hover:opacity-100 transition-opacity tracking-wide" style={{ color: 'white' }}>
+                Découvrir mes projets
               </span>
             </a>
           </div>
         </div>
 
-        {/* Floating Stats - Positioned around the photo */}
-        <div className="absolute inset-0 pointer-events-none hidden lg:block">
-          {/* Top right */}
-          <div className="absolute top-1/4 right-20 animate-float-slow">
-            <div className="backdrop-blur-md rounded-2xl p-4 border border-white/10" style={{ background: 'rgba(0, 0, 0, 0.2)' }}>
-              <div className="text-center">
+        {/* Minimalist floating elements */}
+        <div className="absolute inset-0 pointer-events-none hidden xl:block">
+          <div className="absolute top-1/3 right-32 animate-float-slow opacity-40">
+            <div className="text-right">
+              <div className="text-3xl font-light text-white mb-1">
                 <AnimatedCounter end={5} suffix="+" />
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Projets</p>
               </div>
+              <p className="text-sm font-light" style={{ color: '#94a3b8' }}>Projets</p>
             </div>
           </div>
           
-          {/* Bottom left */}
-          <div className="absolute bottom-1/4 left-20 animate-float-slow" style={{ animationDelay: '1s' }}>
-            <div className="backdrop-blur-md rounded-2xl p-4 border border-white/10" style={{ background: 'rgba(0, 0, 0, 0.2)' }}>
-              <div className="text-center">
+          <div className="absolute bottom-1/3 left-32 animate-float-slow opacity-40" style={{ animationDelay: '1.5s' }}>
+            <div className="text-left">
+              <div className="text-3xl font-light text-white mb-1">
                 <AnimatedCounter end={4} suffix=" ans" />
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Expérience</p>
               </div>
-            </div>
-          </div>
-
-          {/* Top left */}
-          <div className="absolute top-1/3 left-32 animate-float-slow" style={{ animationDelay: '2s' }}>
-            <div className="backdrop-blur-md rounded-2xl p-4 border border-white/10" style={{ background: 'rgba(0, 0, 0, 0.2)' }}>
-              <div className="text-center">
-                <AnimatedCounter end={10} suffix="+" />
-                <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>Technologies</p>
-              </div>
+              <p className="text-sm font-light" style={{ color: '#94a3b8' }}>Expérience</p>
             </div>
           </div>
         </div>
