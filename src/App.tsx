@@ -135,47 +135,43 @@ const PROJECTS = [
 
 const SKILLS_CLOUD = [
   // Langages & Frameworks
-  { name: "Python", category: "language", level: 5, color: "#6366f1" },
-  { name: "Java", category: "language", level: 4, color: "#6366f1" },
-  { name: "JavaScript", category: "language", level: 4, color: "#6366f1" },
-  { name: "React", category: "language", level: 4, color: "#6366f1" },
-  { name: "Angular", category: "language", level: 3, color: "#6366f1" },
-  { name: "Go", category: "language", level: 3, color: "#6366f1" },
-  { name: "Rust", category: "language", level: 2, color: "#6366f1" },
-  { name: "C++", category: "language", level: 2, color: "#6366f1" },
+  { name: "Python", category: "language", color: "#6366f1" },
+  { name: "Java", category: "language", color: "#6366f1" },
+  { name: "JavaScript (React/Angular)", category: "language", color: "#6366f1" },
+  { name: "Go", category: "language", color: "#6366f1" },
+  { name: "Rust", category: "language", color: "#6366f1" },
+  { name: "C++", category: "language", color: "#6366f1" },
   
   // API & Intégration
-  { name: "REST/JSON", category: "api", level: 5, color: "#8b5cf6" },
-  { name: "OpenAPI", category: "api", level: 4, color: "#8b5cf6" },
-  { name: "Swagger", category: "api", level: 4, color: "#8b5cf6" },
-  { name: "Postman", category: "api", level: 4, color: "#8b5cf6" },
-  { name: "JWT/OAuth2", category: "api", level: 4, color: "#8b5cf6" },
+  { name: "REST/JSON", category: "api", color: "#8b5cf6" },
+  { name: "OpenAPI/Swagger", category: "api", color: "#8b5cf6" },
+  { name: "Postman", category: "api", color: "#8b5cf6" },
+  { name: "JWT/OAuth2", category: "api", color: "#8b5cf6" },
   
   // DevOps & Tooling
-  { name: "Docker", category: "devops", level: 5, color: "#a855f7" },
-  { name: "GitHub Actions", category: "devops", level: 4, color: "#a855f7" },
-  { name: "Kubernetes", category: "devops", level: 4, color: "#a855f7" },
-  { name: "Terraform", category: "devops", level: 3, color: "#a855f7" },
-  { name: "AWS", category: "devops", level: 4, color: "#a855f7" },
-  { name: "Ansible", category: "devops", level: 2, color: "#a855f7" },
+  { name: "Docker", category: "devops", color: "#a855f7" },
+  { name: "GitHub Actions", category: "devops", color: "#a855f7" },
+  { name: "Terraform", category: "devops", color: "#a855f7" },
+  { name: "Ansible (bases)", category: "devops", color: "#a855f7" },
+  { name: "Kubernetes", category: "devops", color: "#a855f7" },
+  { name: "AWS", category: "devops", color: "#a855f7" },
   
   // Bases de données
-  { name: "PostgreSQL", category: "database", level: 4, color: "#ec4899" },
-  { name: "SQLite", category: "database", level: 3, color: "#ec4899" },
-  { name: "Redis", category: "database", level: 3, color: "#ec4899" },
+  { name: "PostgreSQL", category: "database", color: "#ec4899" },
+  { name: "SQLite", category: "database", color: "#ec4899" },
   
   // Méthodes & Qualité
-  { name: "Clean Code", category: "quality", level: 5, color: "#10b981" },
-  { name: "TDD", category: "quality", level: 4, color: "#10b981" },
-  { name: "Agile/Scrum", category: "quality", level: 4, color: "#10b981" },
-  { name: "Pytest", category: "quality", level: 4, color: "#10b981" },
-  { name: "JUnit", category: "quality", level: 3, color: "#10b981" }
+  { name: "Agile (Scrum)", category: "quality", color: "#10b981" },
+  { name: "Clean Code", category: "quality", color: "#10b981" },
+  { name: "TDD", category: "quality", color: "#10b981" },
+  { name: "Pytest", category: "quality", color: "#10b981" },
+  { name: "Espresso/JUnit", category: "quality", color: "#10b981" }
 ];
 
 const SKILL_CATEGORIES = {
   language: { label: "Langages & Frameworks", icon: Code2 },
   api: { label: "API & Intégration", icon: Shield },
-  devops: { label: "DevOps & Cloud", icon: Hammer },
+  devops: { label: "DevOps & Tooling", icon: Hammer },
   database: { label: "Bases de données", icon: Database },
   quality: { label: "Méthodes & Qualité", icon: Workflow }
 };
@@ -703,6 +699,7 @@ function GitHubHeatmap() {
   );
 }
 
+
 // ====== 3D Book Carousel ======
 function BookCarousel() {
   const [currentBook, setCurrentBook] = useState(0);
@@ -777,7 +774,7 @@ function BookCarousel() {
   };
 
   return (
-    <div className="relative h-96 overflow-hidden">
+    <div className="relative h-[500px] overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent pointer-events-none"></div>
       
       {/* 3D Container */}
@@ -821,6 +818,7 @@ function BookCarousel() {
                         src={book.cover} 
                         alt={book.title}
                         className="w-full h-full object-cover"
+                        style={{ objectFit: 'cover', objectPosition: 'center' }}
                         onError={(e) => {
                           (e.target as HTMLImageElement).style.display = 'none';
                           (e.target as HTMLImageElement).nextElementSibling!.classList.remove('hidden');
@@ -837,23 +835,6 @@ function BookCarousel() {
                     </div>
                   </div>
                   
-                  {/* Book Info - Only show for active book */}
-                  {isActive && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-80 animate-fadeIn">
-                      <div className="bg-black/80 backdrop-blur-sm rounded-xl p-4 border border-white/20 shadow-2xl">
-                        <h3 className="text-lg font-bold mb-1 text-center">{book.title}</h3>
-                        <p className="text-indigo-400 text-center mb-3">{book.author}</p>
-                        <p className="text-gray-300 text-sm text-center line-clamp-2">{book.description}</p>
-                        <div className="flex justify-center flex-wrap gap-1 mt-3">
-                          {book.tags.slice(0, 3).map((tag) => (
-                            <span key={tag} className="px-2 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs text-purple-300">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             );
@@ -861,27 +842,27 @@ function BookCarousel() {
         </div>
       </div>
 
-      {/* Navigation Controls */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex items-center gap-4">
+      {/* Navigation Controls - Outside carousel area */}
+      <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4 z-10">
         <button 
           onClick={() => rotateCarousel('prev')}
           disabled={isTransitioning}
-          className="p-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition-all disabled:opacity-50"
+          className="p-3 rounded-full bg-black/60 border border-white/30 hover:bg-black/80 transition-all disabled:opacity-50 backdrop-blur-sm"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         
-        <div className="flex gap-1">
+        <div className="flex gap-2">
           {BOOKS.map((_, index) => (
             <button
               key={index}
               onClick={() => rotateCarousel(index)}
-              className={`w-2 h-2 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full transition-all border ${
                 index === currentBook 
-                  ? 'bg-indigo-500 scale-125' 
-                  : 'bg-white/30 hover:bg-white/50'
+                  ? 'bg-indigo-500 border-indigo-400 scale-125' 
+                  : 'bg-black/60 border-white/30 hover:bg-white/20 backdrop-blur-sm'
               }`}
             />
           ))}
@@ -890,18 +871,12 @@ function BookCarousel() {
         <button 
           onClick={() => rotateCarousel('next')}
           disabled={isTransitioning}
-          className="p-2 rounded-full bg-white/10 border border-white/20 hover:bg-white/20 transition-all disabled:opacity-50"
+          className="p-3 rounded-full bg-black/60 border border-white/30 hover:bg-black/80 transition-all disabled:opacity-50 backdrop-blur-sm"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
-      </div>
-
-      {/* Instructions */}
-      <div className="absolute top-4 right-4 text-xs text-gray-400 text-right">
-        <div>Cliquez ou glissez pour naviguer</div>
-        <div>Rotation automatique toutes les 5s</div>
       </div>
     </div>
   );
@@ -1214,27 +1189,29 @@ export default function PortfolioApp() {
             </div>
           </div>
 
+          {/* Discover Button - Only show if content not visible */}
+          {!showContent && (
+            <div className="relative mb-12">
+              <button onClick={handleDiscoverClick} className="group inline-flex flex-col items-center gap-4 transition-all duration-300 hover:scale-105">
+                <div className="relative">
+                  <div className="w-px h-16 mx-auto" style={{ background: 'linear-gradient(to bottom, transparent, #6366f1, transparent)' }}></div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                    <div className="w-8 h-8 rounded-full border-2 border-indigo-400 flex items-center justify-center animate-pulse group-hover:animate-bounce group-hover:scale-110 transition-transform" style={{ background: 'rgba(99, 102, 241, 0.1)' }}>
+                      <div className="w-3 h-3 rounded-full bg-indigo-400 animate-pulse"></div>
+                    </div>
+                  </div>
+                </div>
+                <span className="text-base font-medium opacity-90 group-hover:opacity-100 transition-opacity tracking-wide text-white group-hover:text-indigo-300">
+                  Découvrir mes projets
+                </span>
+              </button>
+            </div>
+          )}
+
           {/* Brief description */}
           <p className="max-w-2xl mx-auto text-lg leading-relaxed mb-16 font-light" style={{ color: '#64748b' }}>
             {PROFILE.about}
           </p>
-
-          {/* Always Visible Discover Button */}
-          <div className="relative">
-            <button onClick={handleDiscoverClick} className="group inline-flex flex-col items-center gap-4 transition-all duration-300 hover:scale-105">
-              <div className="relative">
-                <div className="w-px h-16 mx-auto" style={{ background: 'linear-gradient(to bottom, transparent, #6366f1, transparent)' }}></div>
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                  <div className="w-8 h-8 rounded-full border-2 border-indigo-400 flex items-center justify-center animate-pulse group-hover:animate-bounce group-hover:scale-110 transition-transform" style={{ background: 'rgba(99, 102, 241, 0.1)' }}>
-                    <div className="w-3 h-3 rounded-full bg-indigo-400 animate-pulse"></div>
-                  </div>
-                </div>
-              </div>
-              <span className="text-base font-medium opacity-90 group-hover:opacity-100 transition-opacity tracking-wide text-white group-hover:text-indigo-300">
-                Découvrir mes projets
-              </span>
-            </button>
-          </div>
         </div>
 
         {/* Minimalist floating elements */}
@@ -1450,101 +1427,67 @@ export default function PortfolioApp() {
             <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>Stack principale & pratiques d'ingénierie</p>
           </div>
 
-          {/* Skills Cloud */}
-          <div className="max-w-4xl mx-auto">
-            <Card>
-              <div className="p-8">
-                {/* Legend */}
-                <div className="flex flex-wrap justify-center gap-4 mb-8">
-                  {Object.entries(SKILL_CATEGORIES).map(([key, cat]) => (
-                    <div key={key} className="flex items-center gap-2 px-3 py-1 rounded-full" style={{ background: 'rgba(255, 255, 255, 0.05)' }}>
-                      <cat.icon className="h-4 w-4" style={{ color: SKILLS_CLOUD.find(s => s.category === key)?.color }} />
-                      <span className="text-sm font-medium">{cat.label}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Skills Cloud */}
-                <div className="flex flex-wrap justify-center gap-3 leading-relaxed">
-                  {SKILLS_CLOUD.map((skill, index) => {
-                    const fontSize = `${0.8 + (skill.level * 0.25)}rem`;
-                    const padding = skill.level >= 4 ? 'px-4 py-3' : skill.level >= 3 ? 'px-3 py-2' : 'px-2 py-1';
-                    
-                    return (
-                      <div
-                        key={index}
-                        className={`group relative inline-block ${padding} rounded-full font-semibold transition-all duration-300 hover:scale-110 hover:z-10 cursor-default`}
-                        style={{
-                          fontSize,
-                          background: `${skill.color}20`,
-                          color: skill.color,
-                          border: `1px solid ${skill.color}40`,
-                          transform: `rotate(${(Math.random() - 0.5) * 4}deg)`
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'rotate(0deg) scale(1.1)';
-                          e.currentTarget.style.zIndex = '10';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = `rotate(${(Math.random() - 0.5) * 4}deg) scale(1)`;
-                          e.currentTarget.style.zIndex = 'auto';
-                        }}
-                      >
-                        {skill.name}
-                        
-                        {/* Skill level indicator */}
-                        <div className="absolute -top-1 -right-1">
-                          <div className="flex gap-px">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <div
-                                key={i}
-                                className="w-1 h-1 rounded-full transition-all duration-200"
-                                style={{
-                                  background: i < skill.level ? skill.color : 'rgba(255,255,255,0.2)'
-                                }}
-                              />
-                            ))}
+          {/* Skills Grid - Grouped */}
+          <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-6">
+            {Object.entries(SKILL_CATEGORIES).map(([key, cat]) => {
+              const skillsInCategory = SKILLS_CLOUD.filter(s => s.category === key);
+              const color = skillsInCategory[0]?.color;
+              
+              return (
+                <div key={key} className="group">
+                  <div className="relative">
+                    <div 
+                      className="absolute -inset-1 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-500"
+                      style={{
+                        background: `linear-gradient(135deg, ${color}, ${color}80)`
+                      }}
+                    ></div>
+                    <Card>
+                      <div className="relative z-10 space-y-6">
+                        {/* Category Header */}
+                        <div className="flex items-center gap-4">
+                          <div 
+                            className="p-3 rounded-2xl"
+                            style={{
+                              background: `${color}20`,
+                              border: `1px solid ${color}40`
+                            }}
+                          >
+                            <cat.icon className="h-8 w-8" style={{ color }} />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-bold">{cat.label}</h3>
+                            <div 
+                              className="w-12 h-1 rounded-full mt-2"
+                              style={{
+                                background: `linear-gradient(to right, ${color}, ${color}80)`
+                              }}
+                            ></div>
                           </div>
                         </div>
-                        
-                        {/* Tooltip */}
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                          {SKILL_CATEGORIES[skill.category as keyof typeof SKILL_CATEGORIES].label} • Niveau {skill.level}/5
+
+                        {/* Skills List */}
+                        <div className="space-y-3">
+                          {skillsInCategory.map((skill) => (
+                            <div 
+                              key={skill.name} 
+                              className="flex items-center gap-3 p-3 rounded-xl transition-all hover:scale-[1.02] hover:bg-white/10" 
+                              style={{ background: 'rgba(255, 255, 255, 0.03)' }}
+                            >
+                              <div 
+                                className="w-2 h-2 rounded-full flex-shrink-0" 
+                                style={{ background: color }}
+                              ></div>
+                              <span className="font-medium">{skill.name}</span>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                    );
-                  })}
-                </div>
-                
-                {/* Skills Summary */}
-                <div className="mt-8 pt-6 border-t border-white/10">
-                  <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                    {Object.entries(SKILL_CATEGORIES).map(([key, cat]) => {
-                      const skillsInCategory = SKILLS_CLOUD.filter(s => s.category === key);
-                      const avgLevel = skillsInCategory.reduce((sum, s) => sum + s.level, 0) / skillsInCategory.length;
-                      
-                      return (
-                        <div key={key} className="space-y-2">
-                          <cat.icon className="h-6 w-6 mx-auto" style={{ color: skillsInCategory[0]?.color }} />
-                          <div className="text-xs font-medium opacity-70">{skillsInCategory.length} compétences</div>
-                          <div className="flex justify-center gap-1">
-                            {Array.from({ length: 5 }).map((_, i) => (
-                              <div
-                                key={i}
-                                className="w-2 h-2 rounded-full"
-                                style={{
-                                  background: i < Math.round(avgLevel) ? skillsInCategory[0]?.color : 'rgba(255,255,255,0.1)'
-                                }}
-                              />
-                            ))}
-                          </div>
-                        </div>
-                      );
-                    })}
+                    </Card>
                   </div>
                 </div>
-              </div>
-            </Card>
+              );
+            })}
           </div>
 
           {/* Additional Skills Summary */}
