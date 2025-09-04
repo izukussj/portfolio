@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow } from "lucide-react";
+import { Mail, Phone, Linkedin, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 // ====== Portfolio dernier cri – Single-file React (Tailwind) ======
@@ -13,7 +13,7 @@ const PROFILE = {
   phone: "+33 6 12 37 95 13",
   linkedin: "https://www.linkedin.com/in/alassanelayediop/",
   // Met le chemin de ton PDF si tu veux activer le bouton CV
-  cvUrl: "",
+  cvUrl: "/cv.pdf",
   personalWebsite: "https://seydina.dev",
   blog: "https://blog.seydina.dev",
   github: "https://github.com/seydinadiop",
@@ -1095,7 +1095,7 @@ export default function PortfolioApp() {
             </a>
             
             <a href="#skills" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
-              <Code2 className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
+              <Star className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
               <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 Compétences
               </span>
@@ -1118,9 +1118,7 @@ export default function PortfolioApp() {
             </a>
             
             <a href="#playground" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
-              <svg className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h1m4 0h1m3-6v8a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2h8a2 2 0 012 2z" />
-              </svg>
+              <Terminal className="h-6 w-6 text-white/60 group-hover:text-white transition-colors" />
               <span className="absolute top-16 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/90 text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                 Code Live
               </span>
@@ -1605,7 +1603,7 @@ export default function PortfolioApp() {
               background: 'rgba(34, 197, 94, 0.1)',
               border: '1px solid rgba(34, 197, 94, 0.2)'
             }}>
-              <Code2 className="h-5 w-5 text-green-500" />
+              <Terminal className="h-5 w-5 text-green-500" />
               <span className="text-sm font-medium text-green-500">LIVE CODE</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Code en action</h2>
@@ -1787,6 +1785,18 @@ export default function PortfolioApp() {
                       <span className="text-xs font-medium">GitHub</span>
                     </a>
                   </div>
+                  
+                  {/* Download CV Button */}
+                  {PROFILE.cvUrl && (
+                    <div className="mt-4 pt-4 border-t border-white/10">
+                      <a className="group flex items-center justify-center gap-3 p-4 rounded-lg transition-all hover:scale-[1.02] bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20" href={PROFILE.cvUrl} download="CV-Seydina-Laye.pdf">
+                        <div className="p-2 rounded-lg" style={{ background: 'rgba(59, 130, 246, 0.2)' }}>
+                          <Download className="h-5 w-5 text-blue-400" />
+                        </div>
+                        <span className="font-medium text-blue-400">Télécharger mon CV</span>
+                      </a>
+                    </div>
+                  )}
                 </div>
               </Card>
             </div>
