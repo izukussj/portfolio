@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, Terminal } from "lucide-react";
+import { Mail, Phone, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, Terminal } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 // ====== Portfolio dernier cri – Single-file React (Tailwind) ======
@@ -7,16 +7,16 @@ import { useEffect, useRef, useState } from "react";
 
 const PROFILE = {
   name: "Seydina Laye",
-  title: "Ingénieur informatique – Back-end, API & DevOps",
+  title: "Ingé DevOps – API Evangelist & AI Enthusiast",
   location: "France",
   email: "seydina.laye85@gmail.com",
   phone: "+33 6 12 37 95 13",
   linkedin: "https://www.linkedin.com/in/alassanelayediop/",
   // Met le chemin de ton PDF si tu veux activer le bouton CV
   cvUrl: "/cv.pdf",
-  personalWebsite: "https://seydina.dev",
-  blog: "https://blog.seydina.dev",
-  github: "https://github.com/seydinadiop",
+  personalWebsite: "https://www.perso.seydina.dev",
+  blog: "https://www.blog.seydina.dev",
+  github: "https://github.com/izukussj",
   about:
     "Ingénieur curieux et pragmatique, j'aime comprendre, automatiser et construire des outils utiles. Je valorise la qualité du code, la collaboration et l'impact utilisateur.",
 };
@@ -65,16 +65,6 @@ const EXPERIENCES = [
     ],
     tags: ["Java", "Mobile"],
   },
-  {
-    company: "Université du Littoral",
-    role: "Tuteur pédagogique (CDD)",
-    period: "déc. 2021 → juil. 2023",
-    bullets: [
-      "Accompagnement d'étudiants en mathématiques, physique et informatique",
-      "Création de supports pédagogiques interactifs",
-    ],
-    tags: ["Pédagogie", "Mentorat"],
-  },
 ];
 
 const EDUCATION = [
@@ -108,6 +98,30 @@ const PROJECTS = [
     link: null,
   },
   {
+    title: "CoviDetection",
+    subtitle: "Détection par analyse audio de la toux",
+    description:
+      "Application mobile utilisant l'IA pour détecter la Covid-19 à partir du son de la toux. Modèle entraîné avec TensorFlow et Keras.",
+    tags: ["TensorFlow", "Keras", "Android Studio", "IA", "Audio"],
+    link: null,
+  },
+  {
+    title: "HoopNation",
+    subtitle: "Actualités sportives NBA",
+    description:
+      "Application web permettant aux utilisateurs de suivre les actualités sportives de leurs équipes NBA préférées en temps réel.",
+    tags: ["React", "Tailwind", "Next.js", "API NBA"],
+    link: null,
+  },
+  {
+    title: "NextEr",
+    subtitle: "Site de quiz de culture générale",
+    description:
+      "Plateforme web interactive proposant des quiz de culture générale avec système de scores et classements.",
+    tags: ["Next.js", "React", "Quiz", "Gamification"],
+    link: null,
+  },
+  {
     title: "Portail commandes CVF",
     subtitle: "Angular + Symfony + API SmartCut",
     description:
@@ -115,20 +129,23 @@ const PROJECTS = [
     tags: ["Angular", "Symfony", "API"],
     link: null,
   },
+];
+
+const GAMING_PROJECTS = [
   {
-    title: "App gestion de stocks",
-    subtitle: "Mobile + back‑end Java",
+    title: "KingDomino",
+    subtitle: "Jeu de stratégie avec IA Monte Carlo",
     description:
-      "Suivi d'inventaire, formulaires offline‑friendly, synchronisation sécurisée.",
-    tags: ["Java", "Mobile"],
+      "Implémentation complète du jeu KingDomino avec une IA utilisant l'algorithme Monte Carlo Tree Search pour un niveau de difficulté adaptatif.",
+    tags: ["Pygame", "Python","MCTS","IA"],
     link: null,
   },
   {
-    title: "Recommender Engine",
-    subtitle: "TensorFlow + signaux comportementaux",
+    title: "Goofy Chess",
+    subtitle: "Échecs décalés avec IA humoristique",
     description:
-      "Algorithmes supervisés, features d'engagement, et évaluation offline/online.",
-    tags: ["TensorFlow", "ML", "Recommender"],
+      "Version originale du jeu d'échecs avec des pièces au design farfelu et une IA qui fait des blagues pendant toute la partie.",
+    tags: ["Python"],
     link: null,
   },
 ];
@@ -336,7 +353,7 @@ func benchmarkGateway(url string, concurrent int) {
 const TERMINAL_COMMANDS = [
   { command: "whoami", output: "seydina.laye - Ingénieur Back-end & DevOps" },
   { command: "ls -la skills/", output: "python/\n  docker/\n  kubernetes/\n  fastapi/\n  postgresql/\n  terraform/" },
-  { command: "cat experience.txt", output: "4+ ans d'expérience\n5 projets majeurs\n3 stages en entreprise\nFormation continue" },
+  { command: "cat experience.txt", output: "+10 projets réalisés\n5 projets majeurs\n3 stages en entreprise\nFormation continue" },
   { command: "docker ps", output: "CONTAINER ID   IMAGE        STATUS\n2f1a8b9c     fastapi:latest   Up 2 hours\nd4e2f1c8     postgres:15      Up 3 hours\n7b3c9a1e     redis:alpine     Up 2 hours" },
   { command: "kubectl get pods", output: "NAME                    READY   STATUS    AGE\napi-gateway-7d8f9b2     1/1     Running   2h\nbackend-service-4c1a8   2/2     Running   1h\nredis-cluster-9e7b3     1/1     Running   3h" },
 ];
@@ -604,8 +621,8 @@ function TerminalSimulator() {
   );
 }
 
-// ====== GitHub Heatmap ======
-function GitHubHeatmap() {
+// ====== GitHub Heatmap - Commented for now ======
+/* function GitHubHeatmap() {
   const [hoveredDay, setHoveredDay] = useState<{date: string, commits: number} | null>(null);
   
   // Generate mock data for the last year
@@ -698,7 +715,7 @@ function GitHubHeatmap() {
     </div>
   );
 }
-
+*/
 
 // ====== 3D Book Carousel ======
 function BookCarousel() {
@@ -1036,6 +1053,7 @@ function Card({ children }: any) {
 // ====== Main App ======
 export default function PortfolioApp() {
   const [showContent, setShowContent] = useState(false);
+  const [showGamingProjects, setShowGamingProjects] = useState(false);
   
   const handleDiscoverClick = () => {
     setShowContent(true);
@@ -1047,6 +1065,18 @@ export default function PortfolioApp() {
       }
     }, 300);
   };
+
+  // Detect scroll to reveal content automatically
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!showContent && window.scrollY > 100) {
+        setShowContent(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showContent]);
   
   return (
     <div className="min-h-screen text-white relative" style={{ background: 'var(--bg-primary)' }}>
@@ -1135,11 +1165,11 @@ export default function PortfolioApp() {
       </nav>
 
       {/* Hero Section - Profile Photo Focus */}
-      <section id="home" className="relative overflow-hidden min-h-screen flex items-center justify-center pt-20">
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <section id="home" className="relative overflow-hidden h-screen flex items-center justify-center pt-8 sm:pt-12">
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Profile Photo */}
-          <div className="mb-16 relative">
-            <div className="relative mx-auto w-64 h-64 md:w-80 md:h-80">
+          <div className="mb-8 sm:mb-12 relative">
+            <div className="relative mx-auto w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
               {/* Simple elegant border */}
               <div className="absolute -inset-3 rounded-full" style={{
                 background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3))'
@@ -1164,7 +1194,7 @@ export default function PortfolioApp() {
           </div>
 
           {/* Name and Title */}
-          <div className="space-y-6 mb-12">
+          <div className="space-y-4 mb-6 sm:mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium" style={{
               background: 'rgba(99, 102, 241, 0.1)',
               color: '#6366f1',
@@ -1181,35 +1211,49 @@ export default function PortfolioApp() {
               <TypewriterEffect texts={[
                 'Ingénieur informatique',
                 'Développeur Back-end',
-                'Expert API & DevOps',
-                'Consultant technique'
+                'Ingénieur DevOps',
+                'API Evangelist',
+                'AI Enthusiast'
               ]} speed={80} />
             </div>
           </div>
 
-          {/* Discover Button - Only show if content not visible */}
-          {!showContent && (
-            <div className="relative mb-12">
-              <button onClick={handleDiscoverClick} className="group inline-flex flex-col items-center gap-4 transition-all duration-300 hover:scale-105">
-                <div className="relative">
-                  <div className="w-px h-16 mx-auto" style={{ background: 'linear-gradient(to bottom, transparent, #6366f1, transparent)' }}></div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                    <div className="w-8 h-8 rounded-full border-2 border-indigo-400 flex items-center justify-center animate-pulse group-hover:animate-bounce group-hover:scale-110 transition-transform" style={{ background: 'rgba(99, 102, 241, 0.1)' }}>
-                      <div className="w-3 h-3 rounded-full bg-indigo-400 animate-pulse"></div>
-                    </div>
-                  </div>
-                </div>
-                <span className="text-base font-medium opacity-90 group-hover:opacity-100 transition-opacity tracking-wide text-white group-hover:text-indigo-300">
-                  Découvrir mes projets
-                </span>
-              </button>
-            </div>
-          )}
-
           {/* Brief description */}
-          <p className="max-w-2xl mx-auto text-lg leading-relaxed mb-16 font-light" style={{ color: '#64748b' }}>
+          <p className="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed mb-4 sm:mb-6 font-light" style={{ color: '#64748b' }}>
             {PROFILE.about}
           </p>
+
+          {/* Scroll Indicator - Minimal and elegant */}
+          {!showContent && (
+            <div className="relative mb-4 group cursor-pointer animate-pulse hover:animate-none" onClick={handleDiscoverClick}>
+              <div className="flex flex-col items-center gap-3">
+                {/* Mouse scroll indicator */}
+                <div className="relative w-6 h-10 border-2 border-white/30 group-hover:border-white/60 rounded-full transition-colors duration-300">
+                  {/* Scroll wheel */}
+                  <div className="absolute top-2 left-1/2 w-1 h-2 bg-white/50 group-hover:bg-white/80 rounded-full transform -translate-x-1/2 transition-colors duration-300" 
+                       style={{
+                         animation: 'scroll-wheel 2s ease-in-out infinite'
+                       }}></div>
+                </div>
+                
+                {/* Double chevron down */}
+                <div className="flex flex-col gap-1">
+                  <div className="w-3 h-3 border-r-2 border-b-2 border-white/40 group-hover:border-white/70 transform rotate-45 transition-all duration-300"></div>
+                  <div className="w-3 h-3 border-r-2 border-b-2 border-white/40 group-hover:border-white/70 transform rotate-45 transition-all duration-300 -mt-1"></div>
+                </div>
+              </div>
+            </div>
+          )}
+          
+          <style dangerouslySetInnerHTML={{
+            __html: `
+              @keyframes scroll-wheel {
+                0% { transform: translateX(-50%) translateY(0); opacity: 1; }
+                50% { transform: translateX(-50%) translateY(8px); opacity: 0.3; }
+                100% { transform: translateX(-50%) translateY(0); opacity: 1; }
+              }
+            `
+          }} />
         </div>
 
         {/* Minimalist floating elements */}
@@ -1217,7 +1261,7 @@ export default function PortfolioApp() {
           <div className="absolute top-1/3 right-32 animate-float-slow opacity-40">
             <div className="text-right">
               <div className="text-3xl font-light text-white mb-1">
-                <AnimatedCounter end={5} suffix="+" />
+                <AnimatedCounter end={10} suffix="+" />
               </div>
               <p className="text-sm font-light" style={{ color: '#94a3b8' }}>Projets</p>
             </div>
@@ -1226,7 +1270,7 @@ export default function PortfolioApp() {
           <div className="absolute bottom-1/3 left-32 animate-float-slow opacity-40" style={{ animationDelay: '1.5s' }}>
             <div className="text-left">
               <div className="text-3xl font-light text-white mb-1">
-                <AnimatedCounter end={4} suffix=" ans" />
+                <AnimatedCounter end={1} suffix=" an" />
               </div>
               <p className="text-sm font-light" style={{ color: '#94a3b8' }}>Expérience</p>
             </div>
@@ -1253,67 +1297,182 @@ export default function PortfolioApp() {
             <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>Sélection centrée performance, DX et fiabilité</p>
           </div>
 
-          {/* Featured Project Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-12">
-            {PROJECTS.slice(0, 2).map((p, idx) => (
-              <div key={idx} className="group relative">
-                <div className="absolute -inset-1 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500" style={{
-                  background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))'
-                }}></div>
-                <Card>
-                  <div className="relative z-10">
-                    <div className="flex items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl font-bold mb-2">{p.title}</h3>
-                        <p className="text-lg font-medium" style={{ color: 'var(--accent-primary)' }}>{p.subtitle}</p>
+          {/* Featured Projects - Highlighted */}
+          <div className="space-y-8 mb-16">
+            <div className="text-center">
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-4" style={{
+                background: 'rgba(34, 197, 94, 0.1)',
+                border: '1px solid rgba(34, 197, 94, 0.2)'
+              }}>
+                <Star className="h-4 w-4 text-green-500" />
+                <span className="text-sm font-medium text-green-500">PROJETS PHARES</span>
+              </div>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-8">
+              {PROJECTS.slice(0, 2).map((p, idx) => (
+                <div key={idx} className="group relative">
+                  <div className="absolute -inset-1 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500" style={{
+                    background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))'
+                  }}></div>
+                  <Card className="h-full">
+                    <div className="relative z-10 h-full flex flex-col">
+                      <div className="flex items-start justify-between gap-4 mb-6">
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">{p.title}</h3>
+                          <p className="text-lg font-medium" style={{ color: 'var(--accent-primary)' }}>{p.subtitle}</p>
+                        </div>
+                        {p.link && (
+                          <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 bg-gradient-to-r from-blue-500/10 to-purple-500/10" style={{
+                            color: 'var(--accent-primary)',
+                            border: '1px solid rgba(0, 210, 255, 0.3)'
+                          }}>
+                            Voir <ExternalLink className="h-4 w-4" />
+                          </a>
+                        )}
+                      </div>
+                      
+                      <p className="text-base leading-relaxed mb-6 flex-1" style={{ color: 'var(--text-secondary)' }}>
+                        {p.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
+                        {p.tags.map((t) => (
+                          <span key={t} className="px-3 py-1.5 text-sm font-medium rounded-full transition-all hover:scale-105" style={{
+                            background: 'rgba(255, 255, 255, 0.08)',
+                            color: 'var(--text-primary)',
+                            border: '1px solid rgba(255, 255, 255, 0.12)'
+                          }}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Other Projects - Improved Layout */}
+          <div className="space-y-8">
+            <div className="text-center">
+              <h3 className="text-2xl font-semibold mb-2">Autres projets</h3>
+              <p className="text-lg opacity-70">Applications web et mobile</p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+              {PROJECTS.slice(2).map((p, idx) => (
+                <Card key={idx} className="group hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 hover:bg-white/[0.02] cursor-pointer">
+                  <div className="space-y-4 h-full flex flex-col">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold mb-1 group-hover:text-blue-400 transition-colors duration-300">{p.title}</h3>
+                        <p className="text-sm font-medium group-hover:opacity-100 transition-opacity duration-300" style={{ color: 'var(--accent-primary)', opacity: 0.8 }}>{p.subtitle}</p>
                       </div>
                       {p.link && (
-                        <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105" style={{
+                        <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-110 group-hover:opacity-100 group-hover:shadow-lg" style={{
                           background: 'rgba(0, 210, 255, 0.1)',
                           color: 'var(--accent-primary)',
-                          border: '1px solid rgba(0, 210, 255, 0.2)'
+                          border: '1px solid rgba(0, 210, 255, 0.2)',
+                          opacity: 0.7
                         }}>
-                          Voir <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3" />
                         </a>
                       )}
                     </div>
-                    <p className="text-base leading-relaxed mb-6" style={{ color: 'var(--text-secondary)' }}>{p.description}</p>
-                    <div className="flex flex-wrap gap-3">
-                      {p.tags.map((t) => (
-                        <span key={t} className="px-3 py-1.5 text-sm font-medium rounded-full" style={{
-                          background: 'rgba(255, 255, 255, 0.08)',
+                    
+                    <p className="text-sm leading-relaxed flex-1 group-hover:text-gray-200 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
+                      {p.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5 group-hover:border-white/10 transition-colors duration-300">
+                      {p.tags.slice(0, 4).map((t) => (
+                        <span key={t} className="px-2.5 py-1 text-xs font-medium rounded-full group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300" style={{
+                          background: 'rgba(255, 255, 255, 0.06)',
                           color: 'var(--text-primary)',
-                          border: '1px solid rgba(255, 255, 255, 0.1)'
+                          border: '1px solid rgba(255, 255, 255, 0.08)'
                         }}>{t}</span>
                       ))}
+                      {p.tags.length > 4 && (
+                        <span className="px-2.5 py-1 text-xs font-medium rounded-full group-hover:opacity-70 transition-opacity duration-300" style={{
+                          background: 'rgba(255, 255, 255, 0.03)',
+                          color: 'var(--text-primary)',
+                          opacity: 0.5
+                        }}>+{p.tags.length - 4}</span>
+                      )}
                     </div>
                   </div>
                 </Card>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
-          {/* Other Projects */}
-          <div className="grid md:grid-cols-3 gap-6">
-            {PROJECTS.slice(2).map((p, idx) => (
-              <Card key={idx}>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">{p.title}</h3>
-                    <p className="text-sm mt-1" style={{ color: 'var(--accent-primary)' }}>{p.subtitle}</p>
-                  </div>
-                  {p.link && (
-                    <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm hover:underline" style={{ color: 'var(--accent-primary)' }}>
-                      Voir <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                  <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{p.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map((t) => (<Chip key={t}>{t}</Chip>))}
-                  </div>
+          {/* Gaming Projects Toggle */}
+          <div className="flex justify-center mt-12">
+            <button 
+              onClick={() => setShowGamingProjects(!showGamingProjects)}
+              className="group flex items-center gap-3 px-6 py-3 rounded-full transition-all hover:scale-105" 
+              style={{
+                background: 'rgba(34, 197, 94, 0.1)',
+                border: '1px solid rgba(34, 197, 94, 0.2)',
+                color: 'rgb(34, 197, 94)'
+              }}
+            >
+              <span className="font-medium">
+                {showGamingProjects ? 'Masquer' : 'Voir plus'} - Projets Gaming
+              </span>
+              <div className={`transition-transform duration-300 ${showGamingProjects ? 'rotate-180' : ''}`}>
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+          </div>
+
+          {/* Gaming Projects Section */}
+          <div className={`transition-all duration-500 overflow-hidden ${showGamingProjects ? 'max-h-[1000px] opacity-100 mt-8' : 'max-h-0 opacity-0'}`}>
+            <div className="border-t border-white/10 pt-8">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-4" style={{
+                  background: 'rgba(168, 85, 247, 0.1)',
+                  border: '1px solid rgba(168, 85, 247, 0.2)'
+                }}>
+                  <svg className="h-4 w-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9.5 16.5C8.67 16.5 8 15.83 8 15s.67-1.5 1.5-1.5S11 14.17 11 15s-.67 1.5-1.5 1.5zM14.5 16.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5S16 14.17 16 15s-.67 1.5-1.5 1.5zM15.5 11L12 8.5 8.5 11V9l3.5-3.5L15.5 9v2z"/>
+                  </svg>
+                  <span className="text-sm font-medium text-purple-400">GAMING</span>
                 </div>
-              </Card>
-            ))}
+                <h3 className="text-2xl font-bold mb-2">Projets ludiques</h3>
+                <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>Jeux et intelligence artificielle</p>
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                {GAMING_PROJECTS.map((p, idx) => (
+                  <Card key={idx}>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-lg font-semibold">{p.title}</h3>
+                        <p className="text-sm mt-1" style={{ color: 'var(--accent-tertiary)' }}>{p.subtitle}</p>
+                      </div>
+                      {p.link && (
+                        <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm hover:underline" style={{ color: 'var(--accent-tertiary)' }}>
+                          Voir <ExternalLink className="h-4 w-4" />
+                        </a>
+                      )}
+                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{p.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {p.tags.map((t) => (
+                          <span key={t} className="px-2 py-1 text-xs font-medium rounded-full" style={{
+                            background: 'rgba(168, 85, 247, 0.1)',
+                            color: 'rgb(168, 85, 247)',
+                            border: '1px solid rgba(168, 85, 247, 0.2)'
+                          }}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1632,7 +1791,8 @@ export default function PortfolioApp() {
         </div>
       </section>
 
-      {/* GitHub Activity Section */}
+      {/* GitHub Activity Section - Commented for now */}
+      {/*
       <section className="scroll-mt-24 py-20 relative">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -1682,6 +1842,7 @@ export default function PortfolioApp() {
           </div>
         </div>
       </section>
+      */}
 
       {/* Lectures & Inspirations Section */}
       <section id="books" className="scroll-mt-24 py-20 relative">
@@ -1755,7 +1916,9 @@ export default function PortfolioApp() {
                   <div className="grid grid-cols-2 gap-2">
                     <a className="group flex flex-col items-center gap-2 p-3 rounded-lg transition-all hover:scale-105" href={PROFILE.linkedin} target="_blank" rel="noreferrer" style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
                       <div className="p-2 rounded-lg" style={{ background: 'rgba(255, 0, 110, 0.1)' }}>
-                        <Linkedin className="h-4 w-4" style={{ color: 'var(--accent-tertiary)' }} />
+                        <svg className="h-4 w-4" style={{ color: 'var(--accent-tertiary)' }} fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
                       </div>
                       <span className="text-xs font-medium">LinkedIn</span>
                     </a>
