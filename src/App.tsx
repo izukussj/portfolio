@@ -193,11 +193,6 @@ const SKILL_CATEGORIES = {
   quality: { label: "Méthodes & Qualité", icon: Workflow }
 };
 
-const LANGUAGES = [
-  { name: "Français", level: "Maternelle" },
-  { name: "Anglais", level: "Professionnelle" },
-];
-
 const COMMUNITY = [
   { title: "Président du club d'échecs Chess&Co" },
   { title: "Membre du BDH de l'EILCO" },
@@ -1733,22 +1728,6 @@ export default function PortfolioApp() {
                 </Card>
               </div>
 
-              <div className="space-y-6">
-                <h3 className="text-xl font-semibold">Langues</h3>
-                <Card>
-                  <div className="space-y-4">
-                    {LANGUAGES.map((l, i) => (
-                      <div key={i} className="flex items-center justify-between p-3 rounded-lg" style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
-                        <span className="font-medium">{l.name}</span>
-                        <span className="px-3 py-1 text-sm rounded-full" style={{
-                          background: 'rgba(0, 210, 255, 0.1)',
-                          color: 'var(--accent-primary)'
-                        }}>{l.level}</span>
-                      </div>
-                    ))}
-                  </div>
-                </Card>
-              </div>
             </div>
           </div>
         </div>
