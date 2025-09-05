@@ -1,0 +1,27 @@
+{
+  "name": "Portfolio – Seydina DIOP",
+  "short_name": "Seydina DIOP",
+  "description": "Portfolio de Seydina DIOP - Ingé DevOps, API Evangelist & AI Enthusiast",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f23",
+  "theme_color": "#6366f1",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/icon-192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.svg",
+      "type": "image/svg+xml", 
+      "sizes": "512x512"
+    }
+  ]
+}
