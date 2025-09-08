@@ -15,10 +15,10 @@ const PROFILE = {
   // Met le chemin de ton PDF si tu veux activer le bouton CV
   cvUrl: "/cv.pdf",
   personalWebsite: "https://alphaisidore.neocities.org",
-  blog: "https://www.blog.seydina.dev",
+  blog: "https://rane.gitbook.io/le-glossaire-des-apis/",
   github: "https://github.com/izukussj",
   about:
-    "Ingénieur curieux et pragmatique, j'aime comprendre, automatiser et construire des outils utiles. Je valorise la qualité du code, la collaboration et l'impact utilisateur.",
+    "Ingénieur curieux et pragmatique, j'aime comprendre, optimiser et résoudre des défis complexes. Je valorise l'excellence, la collaboration et l'impact métier.",
 };
 
 const EXPERIENCES = [
@@ -1200,7 +1200,6 @@ export default function PortfolioApp() {
             <h1 className="text-5xl md:text-7xl font-light tracking-tight">
               <span className="text-white font-extralight">{PROFILE.name.split(' ')[0]} </span>
               <span className="font-medium" style={{ color: '#6366f1' }}>{PROFILE.name.split(' ')[1]}</span>
-              <span className="text-2xl md:text-4xl font-mono opacity-80" style={{ color: '#8b5cf6' }}>.dev</span>
             </h1>
             <div className="text-xl md:text-2xl font-light leading-relaxed" style={{ color: '#94a3b8', minHeight: '2rem' }}>
               <TypewriterEffect texts={[
