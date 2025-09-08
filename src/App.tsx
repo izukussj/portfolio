@@ -14,7 +14,7 @@ const PROFILE = {
   linkedin: "https://www.linkedin.com/in/alassanelayediop/",
   // Met le chemin de ton PDF si tu veux activer le bouton CV
   cvUrl: "/cv.pdf",
-  personalWebsite: "https://www.perso.seydina.dev",
+  personalWebsite: "https://alphaisidore.neocities.org",
   blog: "https://www.blog.seydina.dev",
   github: "https://github.com/izukussj",
   about:
