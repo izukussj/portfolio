@@ -1,4 +1,4 @@
-import { Mail, Phone, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, Terminal } from "lucide-react";
+import { Mail, Phone, Download, ExternalLink, Briefcase, GraduationCap, Calendar, Star, Code2, Hammer, Database, Shield, Workflow, Terminal, CalendarDays } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 // ====== Portfolio dernier cri – Single-file React (Tailwind) ======
@@ -1865,13 +1865,13 @@ export default function PortfolioApp() {
             <div className="space-y-6">
               <Card>
                 <div className="p-3 space-y-4">
-                  <a className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:scale-[1.02]" href={`mailto:${PROFILE.email}`} style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
+                  <a className="group flex items-center gap-3 p-3 rounded-lg transition-all hover:scale-[1.02]" href="https://calendly.com/seydina-laye85/30min" target="_blank" rel="noreferrer" style={{ background: 'rgba(255, 255, 255, 0.03)' }}>
                     <div className="p-2 rounded-lg" style={{ background: 'rgba(0, 210, 255, 0.1)' }}>
-                      <Mail className="h-5 w-5" style={{ color: 'var(--accent-primary)' }} />
+                      <CalendarDays className="h-5 w-5" style={{ color: 'var(--accent-primary)' }} />
                     </div>
                     <div>
-                      <div className="font-semibold text-sm">Email</div>
-                      <div className="text-xs" style={{ color: 'var(--text-secondary)' }}>{PROFILE.email}</div>
+                      <div className="font-semibold text-sm">Planifier un entretien</div>
+                      <div className="text-xs" style={{ color: 'var(--text-secondary)' }}>Calendly - 30min</div>
                     </div>
                   </a>
 
@@ -1956,12 +1956,12 @@ export default function PortfolioApp() {
                     et les équipes qui valorisent la qualité et l'innovation.
                   </p>
                   <div className="pt-4">
-                    <a href={`mailto:${PROFILE.email}?subject=Opportunité%20CDI`} className="inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 hover:shadow-lg" style={{
+                    <a href="https://calendly.com/seydina-laye85/30min" target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all hover:scale-105 hover:shadow-lg" style={{
                       background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
                       color: 'white'
                     }}>
-                      <Mail className="h-5 w-5" />
-                      Discutons de votre projet
+                      <CalendarDays className="h-5 w-5" />
+                      Planifier un entretien
                     </a>
                   </div>
                 </div>
