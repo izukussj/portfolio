@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 const PROFILE = {
   name: "Seydina Laye",
-  title: "Ingé DevOps – API Evangelist & AI Enthusiast",
+  title: "Ingé DevOps débutant – API Evangelist & AI Enthusiast",
   location: "France",
   email: "seydina.laye85@gmail.com",
   phone: "+33 6 12 37 95 13",
@@ -54,7 +54,7 @@ const EXPERIENCES = [
       "Moteur de recommandation (TensorFlow) basé sur données comportementales",
       "Amélioration UX d'une plateforme e‑commerce via visualisation de données",
     ],
-    tags: ["TensorFlow", "Data", "UX"],
+    tags: ["TensorFlow", "Angular", "Symfony", "Data", "UX"],
   },
   {
     company: "Vinci Energies",
@@ -63,7 +63,7 @@ const EXPERIENCES = [
     bullets: [
       "Application de gestion de stocks avec UI intuitive et back‑end Java robuste",
     ],
-    tags: ["Java", "Mobile"],
+    tags: ["Java", "Android Studio"],
   },
 ];
 
@@ -348,7 +348,7 @@ func benchmarkGateway(url string, concurrent int) {
 const TERMINAL_COMMANDS = [
   { command: "whoami", output: "seydina.laye - Ingénieur Back-end & DevOps" },
   { command: "ls -la skills/", output: "python/\n  docker/\n  kubernetes/\n  fastapi/\n  postgresql/\n  terraform/" },
-  { command: "cat experience.txt", output: "+10 projets réalisés\n5 projets majeurs\n3 stages en entreprise\nFormation continue" },
+  { command: "cat experience.txt", output: "Ingénieur débutant\n+10 projets réalisés\n3 stages en entreprise\nFormation continue" },
   { command: "docker ps", output: "CONTAINER ID   IMAGE        STATUS\n2f1a8b9c     fastapi:latest   Up 2 hours\nd4e2f1c8     postgres:15      Up 3 hours\n7b3c9a1e     redis:alpine     Up 2 hours" },
   { command: "kubectl get pods", output: "NAME                    READY   STATUS    AGE\napi-gateway-7d8f9b2     1/1     Running   2h\nbackend-service-4c1a8   2/2     Running   1h\nredis-cluster-9e7b3     1/1     Running   3h" },
 ];
@@ -1220,7 +1220,12 @@ export default function PortfolioApp() {
           {/* Scroll Indicator - Minimal and elegant */}
           {!showContent && (
             <div className="relative mb-4 group cursor-pointer animate-pulse hover:animate-none" onClick={handleDiscoverClick}>
-              <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-4">
+                {/* Text invitation */}
+                <p className="text-sm font-light tracking-wide opacity-70 group-hover:opacity-90 transition-opacity duration-300" style={{ color: '#94a3b8' }}>
+                  Voir plus
+                </p>
+                
                 {/* Mouse scroll indicator */}
                 <div className="relative w-6 h-10 border-2 border-white/30 group-hover:border-white/60 rounded-full transition-colors duration-300">
                   {/* Scroll wheel */}
@@ -1261,14 +1266,6 @@ export default function PortfolioApp() {
             </div>
           </div>
           
-          <div className="absolute bottom-1/3 left-32 animate-float-slow opacity-40" style={{ animationDelay: '1.5s' }}>
-            <div className="text-left">
-              <div className="text-3xl font-light text-white mb-1">
-                <AnimatedCounter end={1} suffix=" an" />
-              </div>
-              <p className="text-sm font-light" style={{ color: '#94a3b8' }}>Expérience</p>
-            </div>
-          </div>
         </div>
       </section>
 
