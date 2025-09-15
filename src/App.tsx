@@ -99,10 +99,10 @@ const PROJECTS = [
   },
   {
     title: "Nexter",
-    subtitle: "Application web moderne Next.js / TypeScript",
+    subtitle: "Plateforme de quiz multijoueur en temps réel",
     description:
-      "Application front‑end / server‑side avec Next.js + TypeScript pour utilisateurs. UI/UX responsive, tests automatisés, structure modulaire, bonne gestion des états et navigation.",
-    tags: ["Next.js", "TypeScript", "React", "UI/UX", "Tests", "Web app"],
+      "Plateforme web de quiz multijoueur avec modes Quickplay Fun/Compétitif, système ELO, scoring avec bonus de rapidité. Jeu en temps réel via Socket.IO, authentification NextAuth, dashboard utilisateur avec statistiques. Stack : Next.js 15 + TypeScript + PostgreSQL + Prisma.",
+    tags: ["Next.js", "TypeScript", "Socket.IO", "PostgreSQL", "Prisma", "NextAuth", "Multijoueur", "Temps réel"],
     link: "https://github.com/izukussj/nexter",
   },
 ];
@@ -1058,7 +1058,7 @@ export default function PortfolioApp() {
       </header>
 
       {/* Top Navigation - Hidden initially */}
-      <nav className={`fixed top-6 right-6 z-50 transition-all duration-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+      <nav className={`fixed top-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-50 transition-all duration-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className="backdrop-blur-xl bg-black/10 rounded-2xl p-3 border border-white/10">
           <div className="flex space-x-3">
             <a href="#projects" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
@@ -1116,11 +1116,11 @@ export default function PortfolioApp() {
       </nav>
 
       {/* Hero Section - Profile Photo Focus */}
-      <section id="home" className="relative overflow-hidden h-screen flex items-center justify-center pt-8 sm:pt-12">
+      <section id="home" className="relative overflow-hidden h-screen flex items-center justify-center">
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Profile Photo */}
-          <div className="mb-8 sm:mb-12 relative">
-            <div className="relative mx-auto w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72">
+          <div className="mb-4 sm:mb-6 relative">
+            <div className="relative mx-auto w-40 h-40 sm:w-52 sm:h-52 md:w-60 md:h-60">
               {/* Simple elegant border */}
               <div className="absolute -inset-3 rounded-full" style={{
                 background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3))'
@@ -1145,14 +1145,7 @@ export default function PortfolioApp() {
           </div>
 
           {/* Name and Title */}
-          <div className="space-y-4 mb-6 sm:mb-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium" style={{
-              background: 'rgba(99, 102, 241, 0.1)',
-              color: '#6366f1',
-              border: '1px solid rgba(99, 102, 241, 0.2)'
-            }}>
-              Disponible pour CDI
-            </div>
+          <div className="space-y-4 mb-4 sm:mb-6">
             <h1 className="text-5xl md:text-7xl font-light tracking-tight">
               <span className="text-white font-extralight">{PROFILE.name.split(' ')[0]} </span>
               <span className="font-medium" style={{ color: '#6366f1' }}>{PROFILE.name.split(' ')[1]}</span>
@@ -1173,12 +1166,74 @@ export default function PortfolioApp() {
             {PROFILE.about}
           </p>
 
+          {/* Quick Links - Social & Professional */}
+          <div className="flex items-center justify-center gap-4 mb-6 sm:mb-8">
+            <a
+              href={PROFILE.github}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110"
+              style={{ background: 'rgba(34, 197, 94, 0.1)', border: '1px solid rgba(34, 197, 94, 0.3)' }}
+            >
+              <svg className="h-5 w-5 text-green-400 group-hover:text-green-300 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                GitHub
+              </span>
+            </a>
+
+            <a
+              href={PROFILE.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110"
+              style={{ background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.3)' }}
+            >
+              <svg className="h-5 w-5 text-blue-400 group-hover:text-blue-300 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                LinkedIn
+              </span>
+            </a>
+
+            {PROFILE.cvUrl && (
+              <a
+                href={PROFILE.cvUrl}
+                download="CV-Seydina-Laye.pdf"
+                className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110"
+                style={{ background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.3)' }}
+              >
+                <svg className="h-5 w-5 text-purple-400 group-hover:text-purple-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                  CV
+                </span>
+              </a>
+            )}
+
+            <a
+              href={`mailto:${PROFILE.email}`}
+              className="group relative p-3 rounded-full transition-all duration-300 hover:scale-110"
+              style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)' }}
+            >
+              <svg className="h-5 w-5 text-red-400 group-hover:text-red-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-black/90 text-white text-xs rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                Email
+              </span>
+            </a>
+          </div>
+
           {/* Scroll Indicator - Minimal and elegant */}
           {!showContent && (
             <div className="relative mb-4 group cursor-pointer animate-pulse hover:animate-none" onClick={handleDiscoverClick}>
-              <div className="flex flex-col items-center gap-4">
+              <div className="flex flex-col items-center gap-2">
                 {/* Text invitation */}
-                <p className="text-sm font-light tracking-wide opacity-70 group-hover:opacity-90 transition-opacity duration-300" style={{ color: '#94a3b8' }}>
+                <p className="text-xs font-light tracking-wide opacity-60 group-hover:opacity-80 transition-opacity duration-300" style={{ color: '#94a3b8' }}>
                   Voir plus
                 </p>
                 
@@ -1228,135 +1283,6 @@ export default function PortfolioApp() {
       {/* All content sections - Hidden initially */}
       <div className={`transition-all duration-1000 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8 pointer-events-none'}`}>
         
-      {/* Projects - Enhanced Layout */}
-      <section id="projects" className="scroll-mt-24 py-20 relative">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Section Header with Visual Emphasis */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6" style={{
-              background: 'rgba(0, 210, 255, 0.1)',
-              border: '1px solid rgba(0, 210, 255, 0.2)'
-            }}>
-              <Briefcase className="h-5 w-5" style={{ color: 'var(--accent-primary)' }} />
-              <span className="text-sm font-medium" style={{ color: 'var(--accent-primary)' }}>PORTFOLIO</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Projets récents</h2>
-            <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>Sélection centrée performance, DX et fiabilité</p>
-          </div>
-
-          {/* Featured Projects - Highlighted */}
-          <div className="space-y-8 mb-16">
-            <div className="text-center">
-              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-4" style={{
-                background: 'rgba(34, 197, 94, 0.1)',
-                border: '1px solid rgba(34, 197, 94, 0.2)'
-              }}>
-                <Star className="h-4 w-4 text-green-500" />
-                <span className="text-sm font-medium text-green-500">PROJETS PHARES</span>
-              </div>
-            </div>
-            
-            <div className="grid lg:grid-cols-2 gap-8">
-              {PROJECTS.slice(0, 2).map((p, idx) => (
-                <div key={idx} className="group relative">
-                  <div className="absolute -inset-1 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-500" style={{
-                    background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-tertiary))'
-                  }}></div>
-                  <Card className="h-full">
-                    <div className="relative z-10 h-full flex flex-col">
-                      <div className="flex items-start justify-between gap-4 mb-6">
-                        <div className="flex-1">
-                          <h3 className="text-2xl font-bold mb-2 group-hover:text-blue-400 transition-colors">{p.title}</h3>
-                          <p className="text-lg font-medium" style={{ color: 'var(--accent-primary)' }}>{p.subtitle}</p>
-                        </div>
-                        {p.link && (
-                          <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all hover:scale-105 bg-gradient-to-r from-blue-500/10 to-purple-500/10" style={{
-                            color: 'var(--accent-primary)',
-                            border: '1px solid rgba(0, 210, 255, 0.3)'
-                          }}>
-                            Voir <ExternalLink className="h-4 w-4" />
-                          </a>
-                        )}
-                      </div>
-                      
-                      <p className="text-base leading-relaxed mb-6 flex-1" style={{ color: 'var(--text-secondary)' }}>
-                        {p.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-3 pt-4 border-t border-white/10">
-                        {p.tags.map((t) => (
-                          <span key={t} className="px-3 py-1.5 text-sm font-medium rounded-full transition-all hover:scale-105" style={{
-                            background: 'rgba(255, 255, 255, 0.08)',
-                            color: 'var(--text-primary)',
-                            border: '1px solid rgba(255, 255, 255, 0.12)'
-                          }}>{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Other Projects - Improved Layout */}
-          <div className="space-y-8">
-            <div className="text-center">
-              <h3 className="text-2xl font-semibold mb-2">Autres projets</h3>
-              <p className="text-lg opacity-70">Applications web et mobile</p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {PROJECTS.slice(2).map((p, idx) => (
-                <Card key={idx} className="group hover:scale-[1.02] hover:shadow-2xl transition-all duration-300 hover:bg-white/[0.02] cursor-pointer">
-                  <div className="space-y-4 h-full flex flex-col">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <h3 className="text-xl font-semibold mb-1 group-hover:text-blue-400 transition-colors duration-300">{p.title}</h3>
-                        <p className="text-sm font-medium group-hover:opacity-100 transition-opacity duration-300" style={{ color: 'var(--accent-primary)', opacity: 0.8 }}>{p.subtitle}</p>
-                      </div>
-                      {p.link && (
-                        <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-110 group-hover:opacity-100 group-hover:shadow-lg" style={{
-                          background: 'rgba(0, 210, 255, 0.1)',
-                          color: 'var(--accent-primary)',
-                          border: '1px solid rgba(0, 210, 255, 0.2)',
-                          opacity: 0.7
-                        }}>
-                          <ExternalLink className="h-3 w-3" />
-                        </a>
-                      )}
-                    </div>
-                    
-                    <p className="text-sm leading-relaxed flex-1 group-hover:text-gray-200 transition-colors duration-300" style={{ color: 'var(--text-secondary)' }}>
-                      {p.description}
-                    </p>
-                    
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/5 group-hover:border-white/10 transition-colors duration-300">
-                      {p.tags.slice(0, 4).map((t) => (
-                        <span key={t} className="px-2.5 py-1 text-xs font-medium rounded-full group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300" style={{
-                          background: 'rgba(255, 255, 255, 0.06)',
-                          color: 'var(--text-primary)',
-                          border: '1px solid rgba(255, 255, 255, 0.08)'
-                        }}>{t}</span>
-                      ))}
-                      {p.tags.length > 4 && (
-                        <span className="px-2.5 py-1 text-xs font-medium rounded-full group-hover:opacity-70 transition-opacity duration-300" style={{
-                          background: 'rgba(255, 255, 255, 0.03)',
-                          color: 'var(--text-primary)',
-                          opacity: 0.5
-                        }}>+{p.tags.length - 4}</span>
-                      )}
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-
-        </div>
-      </section>
-
       {/* Experience - Timeline Style */}
       <section id="experience" className="scroll-mt-24 py-20 relative">
         <div className="max-w-6xl mx-auto px-6">
@@ -1377,7 +1303,7 @@ export default function PortfolioApp() {
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-6 top-0 bottom-0 w-px" style={{ background: 'linear-gradient(to bottom, var(--accent-primary), var(--accent-tertiary))' }}></div>
-            
+
             <div className="space-y-12">
               {EXPERIENCES.map((e, i) => (
                 <div key={i} className="group relative flex gap-8">
@@ -1445,6 +1371,68 @@ export default function PortfolioApp() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Projects - Enhanced Layout */}
+      <section id="projects" className="scroll-mt-24 py-20 relative">
+        <div className="max-w-6xl mx-auto px-6">
+          {/* Section Header with Visual Emphasis */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-6" style={{
+              background: 'rgba(0, 210, 255, 0.1)',
+              border: '1px solid rgba(0, 210, 255, 0.2)'
+            }}>
+              <Briefcase className="h-5 w-5" style={{ color: 'var(--accent-primary)' }} />
+              <span className="text-sm font-medium" style={{ color: 'var(--accent-primary)' }}>PORTFOLIO</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Projets récents</h2>
+            <p className="text-xl" style={{ color: 'var(--text-secondary)' }}>Sélection centrée performance, DX et fiabilité</p>
+          </div>
+
+          {/* All Projects - Unified Grid Layout */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROJECTS.map((p, idx) => (
+              <Card key={idx} className="group hover:scale-[1.02] transition-all duration-300 hover:bg-white/[0.02] cursor-pointer h-full">
+                <div className="h-full flex flex-col space-y-4">
+                  {/* Header with title and link */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors duration-300">{p.title}</h3>
+                      <p className="text-sm font-medium opacity-80" style={{ color: 'var(--accent-primary)' }}>{p.subtitle}</p>
+                    </div>
+                    {p.link && (
+                      <a href={p.link} target="_blank" rel="noreferrer" className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:scale-105 shrink-0" style={{
+                        background: 'rgba(99, 102, 241, 0.1)',
+                        color: 'rgb(99, 102, 241)',
+                        border: '1px solid rgba(99, 102, 241, 0.3)'
+                      }}>
+                        Voir <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm leading-relaxed flex-1" style={{ color: 'var(--text-secondary)' }}>
+                    {p.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-2 pt-3 border-t border-white/10">
+                    {p.tags.map((t) => (
+                      <span key={t} className="px-2 py-1 text-xs font-medium rounded-full transition-all hover:scale-105" style={{
+                        background: 'rgba(99, 102, 241, 0.1)',
+                        color: 'rgb(99, 102, 241)',
+                        border: '1px solid rgba(99, 102, 241, 0.2)'
+                      }}>{t}</span>
+                    ))}
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+
+
         </div>
       </section>
 
