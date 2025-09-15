@@ -24,46 +24,46 @@ const PROFILE = {
 const EXPERIENCES = [
   {
     company: "OCTO Technology",
-    role: "Stagiaire Ingénieur Back‑end & DevOps",
+    role: "Stagiaire Ingénieur Back-end & DevOps (Fin d'études)",
     period: "févr. 2025 → août 2025",
     bullets: [
-      "Benchmark de solutions d'API Management (performance, coût, gouvernance, UX, archi K8s)",
-      "CLI Python orchestrant Apache Bench & wrk pour mesurer latence & scalabilité sur 4 API Gateways conteneurisées",
-      "Dashboard comparatif : FastAPI + FAISS (RAG) avec filtres multi‑axes & recherche naturelle",
-      "Publication des résultats sur api-by-octo",
+      "Conception et pilotage d'un benchmark de solutions d'API Management (Kong, Apigee, Axway…), en évaluant performance, coût, gouvernance, UX et architecture Kubernetes.",
+      "Développement d'un outil CLI Python orchestrant Apache Bench & wrk pour mesurer latence et scalabilité de 4 API Gateways conteneurisées.",
+      "Création d'un dashboard comparatif (FastAPI + FAISS, approche RAG) avec filtres multi-axes et recherche naturelle.",
+      "Publication et vulgarisation des résultats sur api-by-octo (site vitrine du benchmark)."
     ],
-    tags: ["Python", "Docker", "Kubernetes", "ab", "wrk", "FastAPI", "FAISS", "RAG"],
+    tags: ["Python", "Kubernetes", "API Management", "Benchmark", "FastAPI", "FAISS", "RAG", "Docker", "ab", "wrk"],
   },
   {
     company: "Cabinet Vision France (CVF)",
     role: "Stagiaire Développeur JavaScript",
     period: "avr. 2024 → juil. 2024",
     bullets: [
-      "Portail de gestion des commandes (Angular + Symfony)",
-      "Intégration de l'API SmartCut pour calculs de plans de découpe en temps réel",
-      "Modernisation des automatisations : conversion vers JavaScript, refacto de macros propriétaires",
-      "Mise en place d'un workflow Git + VS Code et bonnes pratiques d'équipe",
+      "Développement d'un portail de gestion des commandes (Angular + Symfony) pour automatiser et fiabiliser le calcul en temps réel des plans de découpe (API SmartCut).",
+      "Modernisation et refonte d'automatisations métiers : conversion vers JavaScript, refactoring de macros propriétaires.",
+      "Mise en place d'un workflow d'équipe (Git, VS Code) et rédaction de bonnes pratiques partagées.",
     ],
-    tags: ["Angular", "Symfony", "API", "Git"],
+    tags: ["Angular", "Symfony", "JavaScript", "API", "Git", "Workflow"],
   },
   {
     company: "Chapiock",
     role: "Stagiaire Data Scientist & Développeur Web",
     period: "avr. 2023 → juil. 2023",
     bullets: [
-      "Moteur de recommandation (TensorFlow) basé sur données comportementales",
-      "Amélioration UX d'une plateforme e‑commerce via visualisation de données",
+      "Conception d'un moteur de recommandation personnalisé basé sur du machine learning (TensorFlow) et l'analyse de données comportementales.",
+      "Optimisation de l'UX d'une plateforme e‑commerce grâce à la visualisation de données utilisateurs.",
     ],
-    tags: ["TensorFlow", "Angular", "Symfony", "Data", "UX"],
+    tags: ["TensorFlow", "Python", "Angular", "Symfony", "Data Science", "UX"],
   },
   {
     company: "Vinci Energies",
     role: "Stagiaire Développeur Mobile",
     period: "mai 2019 → juil. 2019",
     bullets: [
-      "Application de gestion de stocks avec UI intuitive et back‑end Java robuste",
+      "Développement d'une application Android de gestion de stocks avec back-end Java.",
+      "Design d'une interface utilisateur intuitive et ergonomique.",
     ],
-    tags: ["Java", "Android Studio"],
+    tags: ["Java", "Android Studio", "Mobile", "UI"],
   },
 ];
 
@@ -82,71 +82,28 @@ const EDUCATION = [
 
 const PROJECTS = [
   {
-    title: "APIM Benchmark CLI",
-    subtitle: "Mesure latence & scalabilité sur 4 API Gateways",
+    title: "Larryman",
+    subtitle: "Extension Chrome + Chatbot intelligent",
     description:
-      "Outil CLI Python orchestrant ab & wrk, exécution conteneurisée, scénarios reproductibles, reporting clair.",
-    tags: ["Python", "Docker", "K8s", "ab", "wrk"],
-    link: null,
+      "Extension Chrome qui permet, via le clic droit, d'interagir avec un chatbot alimenté par OpenAI : définitions, traduction, chat contextuel. Backend dédié avec API REST, sécurisation (rate‑limiting, validation), tests, architecture modulaire.",
+    tags: ["JavaScript", "Node.js", "OpenAI", "Chatbot", "Extension Chrome", "Sécurité", "Tests"],
+    link: "https://github.com/izukussj/larryman",
   },
   {
-    title: "Dashboard comparatif APIM (RAG)",
-    subtitle: "Recherche naturelle & filtres multi‑axes",
+    title: "AgentForgeKong",
+    subtitle: "CLI/API infra pour Kong – prompt à config/plugin",
     description:
-      "FastAPI + FAISS pour une exploration guidée des features, coûts et métriques de plateformes d'API Management.",
-    tags: ["FastAPI", "FAISS", "RAG", "NLP"],
-    link: null,
+      "Outil CLI en Python convertissant un prompt en configuration Kong (via decK) ou plugin Lua. Mode heuristique ou LLM, génération de templates, interaction utilisateur pour feedback, sécurité et fallback inclus.",
+    tags: ["Python", "Kong", "Plugin Lua", "CLI", "Configuration Infra", "LLM", "Templates"],
+    link: "https://github.com/izukussj/AgentForgeKong",
   },
   {
-    title: "CoviDetection",
-    subtitle: "Détection par analyse audio de la toux",
+    title: "Nexter",
+    subtitle: "Application web moderne Next.js / TypeScript",
     description:
-      "Application mobile utilisant l'IA pour détecter la Covid-19 à partir du son de la toux. Modèle entraîné avec TensorFlow et Keras.",
-    tags: ["TensorFlow", "Keras", "Android Studio", "IA", "Audio"],
-    link: null,
-  },
-  {
-    title: "HoopNation",
-    subtitle: "Actualités sportives NBA",
-    description:
-      "Application web permettant aux utilisateurs de suivre les actualités sportives de leurs équipes NBA préférées en temps réel.",
-    tags: ["React", "Tailwind", "Next.js", "API NBA"],
-    link: null,
-  },
-  {
-    title: "NextEr",
-    subtitle: "Site de quiz de culture générale",
-    description:
-      "Plateforme web interactive proposant des quiz de culture générale avec système de scores et classements.",
-    tags: ["Next.js", "React", "Quiz", "Gamification"],
-    link: null,
-  },
-  {
-    title: "Portail commandes CVF",
-    subtitle: "Angular + Symfony + API SmartCut",
-    description:
-      "Gestion temps réel des commandes et calculs de découpe. Focus DX, performance et fiabilité.",
-    tags: ["Angular", "Symfony", "API"],
-    link: null,
-  },
-];
-
-const GAMING_PROJECTS = [
-  {
-    title: "KingDomino",
-    subtitle: "Jeu de stratégie avec IA Monte Carlo",
-    description:
-      "Implémentation complète du jeu KingDomino avec une IA utilisant l'algorithme Monte Carlo Tree Search pour un niveau de difficulté adaptatif.",
-    tags: ["Pygame", "Python","MCTS","IA"],
-    link: null,
-  },
-  {
-    title: "Goofy Chess",
-    subtitle: "Échecs décalés avec IA humoristique",
-    description:
-      "Version originale du jeu d'échecs avec des pièces au design farfelu et une IA qui fait des blagues pendant toute la partie.",
-    tags: ["Python"],
-    link: null,
+      "Application front‑end / server‑side avec Next.js + TypeScript pour utilisateurs. UI/UX responsive, tests automatisés, structure modulaire, bonne gestion des états et navigation.",
+    tags: ["Next.js", "TypeScript", "React", "UI/UX", "Tests", "Web app"],
+    link: "https://github.com/izukussj/nexter",
   },
 ];
 
@@ -1048,7 +1005,6 @@ function Card({ children }: any) {
 // ====== Main App ======
 export default function PortfolioApp() {
   const [showContent, setShowContent] = useState(false);
-  const [showGamingProjects, setShowGamingProjects] = useState(false);
   
   const handleDiscoverClick = () => {
     setShowContent(true);
@@ -1397,74 +1353,7 @@ export default function PortfolioApp() {
             </div>
           </div>
 
-          {/* Gaming Projects Toggle */}
-          <div className="flex justify-center mt-12">
-            <button 
-              onClick={() => setShowGamingProjects(!showGamingProjects)}
-              className="group flex items-center gap-3 px-6 py-3 rounded-full transition-all hover:scale-105" 
-              style={{
-                background: 'rgba(34, 197, 94, 0.1)',
-                border: '1px solid rgba(34, 197, 94, 0.2)',
-                color: 'rgb(34, 197, 94)'
-              }}
-            >
-              <span className="font-medium">
-                {showGamingProjects ? 'Masquer' : 'Voir plus'} - Projets Gaming
-              </span>
-              <div className={`transition-transform duration-300 ${showGamingProjects ? 'rotate-180' : ''}`}>
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </button>
-          </div>
 
-          {/* Gaming Projects Section */}
-          <div className={`transition-all duration-500 overflow-hidden ${showGamingProjects ? 'max-h-[1000px] opacity-100 mt-8' : 'max-h-0 opacity-0'}`}>
-            <div className="border-t border-white/10 pt-8">
-              <div className="text-center mb-8">
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full mb-4" style={{
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  border: '1px solid rgba(168, 85, 247, 0.2)'
-                }}>
-                  <svg className="h-4 w-4 text-purple-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM9.5 16.5C8.67 16.5 8 15.83 8 15s.67-1.5 1.5-1.5S11 14.17 11 15s-.67 1.5-1.5 1.5zM14.5 16.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5S16 14.17 16 15s-.67 1.5-1.5 1.5zM15.5 11L12 8.5 8.5 11V9l3.5-3.5L15.5 9v2z"/>
-                  </svg>
-                  <span className="text-sm font-medium text-purple-400">GAMING</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Projets ludiques</h3>
-                <p className="text-lg" style={{ color: 'var(--text-secondary)' }}>Jeux et intelligence artificielle</p>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                {GAMING_PROJECTS.map((p, idx) => (
-                  <Card key={idx}>
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-lg font-semibold">{p.title}</h3>
-                        <p className="text-sm mt-1" style={{ color: 'var(--accent-tertiary)' }}>{p.subtitle}</p>
-                      </div>
-                      {p.link && (
-                        <a href={p.link} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-sm hover:underline" style={{ color: 'var(--accent-tertiary)' }}>
-                          Voir <ExternalLink className="h-4 w-4" />
-                        </a>
-                      )}
-                      <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{p.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {p.tags.map((t) => (
-                          <span key={t} className="px-2 py-1 text-xs font-medium rounded-full" style={{
-                            background: 'rgba(168, 85, 247, 0.1)',
-                            color: 'rgb(168, 85, 247)',
-                            border: '1px solid rgba(168, 85, 247, 0.2)'
-                          }}>{t}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
