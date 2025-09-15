@@ -1058,7 +1058,7 @@ export default function PortfolioApp() {
       </header>
 
       {/* Top Navigation - Hidden initially */}
-      <nav className={`fixed top-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-50 transition-all duration-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
+      <nav className={`hidden sm:block fixed top-6 sm:right-6 z-50 transition-all duration-500 ${showContent ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`}>
         <div className="backdrop-blur-xl bg-black/10 rounded-2xl p-3 border border-white/10">
           <div className="flex space-x-3">
             <a href="#projects" className="group relative block p-3 rounded-xl transition-all duration-300 hover:scale-110 hover:bg-white/10">
