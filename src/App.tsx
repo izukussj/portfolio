@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 // - Modifie les constantes ci-dessous pour personnaliser
 
 const PROFILE = {
-  name: "Seydina Laye",
-  title: "Ingé DevOps débutant – API Evangelist & AI Enthusiast",
+  name: "Seydina Diop",
+  title: "Ingénieur Fullstack débutant – API Evangelist & AI Enthusiast",
   location: "France",
   email: "seydina.laye85@gmail.com",
   phone: "+33 6 12 37 95 13",
@@ -1153,7 +1153,7 @@ export default function PortfolioApp() {
             <div className="text-xl md:text-2xl font-light leading-relaxed" style={{ color: '#94a3b8', minHeight: '2rem' }}>
               <TypewriterEffect texts={[
                 'Ingénieur informatique',
-                'Développeur Back-end',
+                'Développeur Full-Stack',
                 'Ingénieur DevOps',
                 'API Evangelist',
                 'AI Enthusiast'
